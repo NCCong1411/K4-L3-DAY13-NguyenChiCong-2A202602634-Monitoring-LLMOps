@@ -46,7 +46,11 @@ def resolve_prompt(
                 type="text",
                 fallback=DEFAULT_PROMPT_TEMPLATE,
                 cache_ttl_seconds=60,
-                fetch_timeout_seconds=2,
+                # Keep the short default for local/offline runs, but let a cloud
+                # deployment allow a cold TLS connection a little longer.
+                fetch_timeout_seconds=int(
+                    os.getenv("LANGFUSE_PROMPT_FETCH_TIMEOUT_SECONDS", "2")
+                ),
                 max_retries=0,
             )
             if getattr(managed_prompt, "is_fallback", False):

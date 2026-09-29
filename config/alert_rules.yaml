@@ -1,25 +1,25 @@
 alerts:
-  - name: TODO_alert_1
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: high_p95_latency
+    severity: warning
+    condition: P95 latency_ms > 3000 ms
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
+    owner: llmops-oncall
     runbook: docs/alerts.md#alert-1
-  - name: TODO_alert_2
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: elevated_error_rate
+    severity: critical
+    condition: Error rate > 2 percent
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
+    owner: llmops-oncall
     runbook: docs/alerts.md#alert-2
-  - name: TODO_alert_3
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: low_quality_proxy
+    severity: warning
+    condition: Average quality_score < 0.75
+    duration: 15m
     type: symptom-based
     channel: slack
-    owner: TODO
+    owner: llmops-oncall
     runbook: docs/alerts.md#alert-3
